@@ -15,6 +15,8 @@ ollama pull llama3.2
 ollama run llama3.2
 http://localhost:11434/v1/completions
 
+ollama pull hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf
+
 #Projects
 - Translation Service based on AI specially for Arabic/Urdu Scripts (work required)
 - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct

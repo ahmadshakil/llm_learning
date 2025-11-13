@@ -1,17 +1,7 @@
 const url = "http://localhost:11434/v1";
 let chunkEmbeddings = [];
 let embeddingsStored = false;
-let useModel = null;
-// Load USE model once
-async function loadUSEModel() {
-  if (!useModel) {
-    useModel = await use.load();
-    console.log("Universal Sentence Encoder loaded.");
-  }
-}
-
 async function embedBatch(texts){
-  await loadUSEModel();
   
   const englishOnlyTexts = texts
     .map(removeArabic)
@@ -19,18 +9,22 @@ async function embedBatch(texts){
 
   if (englishOnlyTexts.length === 0) return;
 
-  const embeddingsTensor = await useModel.embed(englishOnlyTexts);
-  const embeddingsArray = await embeddingsTensor.array();
-
-  chunkEmbeddings.push(...embeddingsArray);
-  embeddingsTensor.dispose(); // free memory
-
+  const res = await fetch(`${url}/embeddings`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    model: "hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf",
+    input: englishOnlyTexts
+    })
+  });
+const data = await res.json();
+chunkEmbeddings.push(...data.data.map(d => d.embedding));
 
 }
 async function storeEmbeddings(){
   console.log("Chunks size::::"+chunks.length);
-  for (let i = 0; i < chunks.length; i += 50) {
-    const batch = chunks.slice(i, i + 50);
+  for (let i = 0; i < chunks.length; i += 100) {
+    const batch = chunks.slice(i, i + 100);
     await embedBatch(batch);
     console.log("processed embeddings ::::"+chunkEmbeddings.length);
   }
