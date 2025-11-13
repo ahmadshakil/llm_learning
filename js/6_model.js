@@ -1,28 +1,35 @@
 const url = "http://localhost:11434/v1";
 let chunkEmbeddings = [];
 let embeddingsStored = false;
-async function storeEmbeddings(){
-    for (const chunk of chunks) {
-    const payload = {
-      model: "llama3.2", 
-      prompt: `Generate embedding vector for semantic search:\n${chunk}`,
-      max_tokens: 1
-    };
-    try {
-      const res = await fetch(`${url}/embeddings`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input: chunk, model: "llama3.2" })
-      });
-      const data = await res.json();
-      chunkEmbeddings.push(data.data[0].embedding);
-    } catch (err) {
-      console.error("Embedding error:", err);
-    }
-  }
-  console.log("Chunks size::::"+chunks.length);
-  console.log("chunkEmbeddings size::::"+chunkEmbeddings.length);
+async function embedBatch(texts){
+  
+  const englishOnlyTexts = texts
+    .map(removeArabic)
+    .filter(t => t.length > 20); // skip very short or empty texts
 
+  if (englishOnlyTexts.length === 0) return;
+
+  const res = await fetch(`${url}/embeddings`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    model: "llama3.2",
+    input: englishOnlyTexts
+    })
+  });
+const data = await res.json();
+chunkEmbeddings.push(...data.data.map(d => d.embedding));
+
+}
+async function storeEmbeddings(){
+  console.log("Chunks size::::"+chunks.length);
+  for (let i = 0; i < chunks.length; i += 10) {
+    const batch = chunks.slice(i, i + 10);
+    await embedBatch(batch);
+    console.log("processed embeddings ::::"+chunkEmbeddings.length);
+  }
+  
+  
 }
 
 function getRelevantChunks(queryEmbedding, topK = 3) {
@@ -91,7 +98,7 @@ async function predictTranslation() {
   
     if (!embeddingsStored) {
      predictionElem.textContent = "Storing Embeddings...";
-     await extractPdfText();
+     await storeEmbeddings();
      embeddingsStored = true;
   }
   
@@ -100,3 +107,7 @@ async function predictTranslation() {
   predictionElem.textContent = `[RAG LLM Translation] ${translation}`;
 }
 
+function removeArabic(text) {
+  // Unicode range for Arabic: 0600–06FF
+  return text.replace(/[\u0600-\u06FF]+/g, '').trim();
+}
