@@ -57,6 +57,54 @@ ollama run llama3.2
 http://localhost:11434/v1/completions
 http://localhost:11434/v1/embeddings
 
+# What is Prompt Engineering?
+
+**Prompt engineering** is the practice of **carefully designing and structuring inputs (prompts) given to a language model (like GPT or any LLM) to get the most accurate, relevant, or useful output**. Think of it as “programming” the model using words instead of code.
+
+---
+
+## 1. Why it matters
+Language models don’t “know” what you want inherently—they generate text based on patterns learned during training. The way you phrase your request strongly affects the output.
+
+Example:
+- **Vague prompt:** `"Tell me about cats"` → might give a generic paragraph.  
+- **Engineered prompt:** `"Write a 3-paragraph essay about the history of domestic cats, including their role in ancient Egypt and modern society"` → more structured and useful result.
+
+---
+
+## 2. Techniques in Prompt Engineering
+
+- **Instruction clarity:** Be explicit about what you want.  
+  Example: `"Summarize the following article in 5 bullet points."`
+
+- **Context provision:** Provide background or examples.  
+  Example: `"Here is a sample of an email. Write a similar email inviting a friend to a birthday party."`
+
+- **Format control:** Specify the output format.  
+  Example: `"Generate a JSON object containing name, age, and email from this text."`
+
+- **Step-by-step prompting:** Ask the model to reason step by step.  
+  Example: `"Solve this math problem step by step: 45 × 37"`
+
+---
+
+## 3. Applications
+
+- Writing code or debugging code.
+- Generating content like essays, summaries, or reports.
+- Chatbots or customer support automation.
+- Data extraction and transformation.
+- Scientific or technical reasoning.
+
+---
+
+## 4. Why it’s a skill
+Good prompt engineering can drastically reduce errors, make outputs more relevant, and even save costs (for models you pay per token).  
+
+Essentially, you’re **programming with language instead of code**.
+
+---
+
 
 
 # Projects
