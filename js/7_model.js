@@ -57,8 +57,11 @@ async function translateWithRAG(input) {
   console.log("relevantText:::::"+relevantText);
 
   // Send to LLM for translation
-  const prompt = `Translate the following Arabic phrase to English using the reference text below:\nReference:\n${relevantText}\nPhrase: "${input}"`;
-
+const prompt = `Using only the reference text below, provide the English translation of the Arabic phrase. 
+    Return only the translation, with no explanations or additional text.
+      Reference:
+      ${relevantText}   
+      Phrase: "${input}"`;
   const payload = {
     model: "llama3.2",
     prompt: prompt,
@@ -102,7 +105,7 @@ async function predictTranslation() {
      embeddingsStored = true;
   }
   
-  
+  predictionElem.textContent = "Translating...";
   const translation = await translateWithRAG(input);
   predictionElem.textContent = `[RAG LLM Translation] ${translation}`;
 }
