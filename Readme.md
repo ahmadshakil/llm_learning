@@ -17,7 +17,7 @@
 
 # LM vs Traditional Program (Simple Comparison)
 
- 1. How it is built
+ ⭐ 1. How it is built
 	
 	
 | Traditional Program                             | Language Model                                     |
@@ -41,6 +41,7 @@
 |-------------------------------|--------------------------------------|
 | Programmed knowledge          | Learned knowledge from training data |
 | Cannot generalize beyond code | Can generalize, infer, reason        |
+
 
 # Visual Code Extension (Ctrl+Shift+X)
 - Live Server by Ritwick Dey
