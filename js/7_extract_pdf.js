@@ -2,7 +2,7 @@ let chunks = [];
 let pdfLoaded = false;
 async function extractPdfText() {
   //const PDF_URL = '/docs/quran_translation.pdf'; // Change this to your actual PDF URL
-  const PDF_URL = '/docs/translation_reference_v2.pdf';
+  const PDF_URL = '/docs/translation_reference_v3.pdf';
   const response = await fetch(PDF_URL);
   const arrayBuffer = await response.arrayBuffer();
   pdfjsLib.GlobalWorkerOptions.workerSrc =
