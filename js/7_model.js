@@ -3,18 +3,16 @@ let chunkEmbeddings = [];
 let embeddingsStored = false;
 async function embedBatch(texts){
   
-  const englishOnlyTexts = texts
-    .map(removeArabic)
-    .filter(t => t.length > 20); // skip very short or empty texts
+  
 
-  if (englishOnlyTexts.length === 0) return;
+  if (texts.length === 0) return;
 
   const res = await fetch(`${url}/embeddings`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     model: "hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf",
-    input: englishOnlyTexts
+    input: texts
     })
   });
 const data = await res.json();
