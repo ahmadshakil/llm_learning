@@ -1,3 +1,7 @@
+# About this project
+
+This demo project helps students learn about AI and Language Models, especially how to install and run models on their local machines.
+
 # Program
 
 - Collection of instructions directing a computer to perform tasks.
@@ -17,8 +21,7 @@
 
 # LM vs Traditional Program (Simple Comparison)
 
- ⭐ 1. How it is built
-	
+## 1. How it is built
 	
 | Traditional Program                             | Language Model                                     |
 |-------------------------------------------------|--------------------------------------------------|
@@ -26,7 +29,7 @@
 | Behavior defined by rules (if/else, loops, functions) | Behavior emerges from patterns learned by the model |
 | Deterministic (same input → same output)       | Often probabilistic (same input → may vary)     |
 
-⭐ 2. How it works
+##  2. How it works
 
 | Traditional Program           | Language Model                                      |
 |-------------------------------|---------------------------------------------------|
@@ -34,8 +37,7 @@
 | Logic is fixed                | Logic is learned and stored in parameters        |
 | Requires precise input        | Can understand messy, natural human language     |
 
-
-⭐ 3. Where knowledge comes from
+##  3. Where knowledge comes from
 
 | Traditional Program           | Language Model                        |
 |-------------------------------|--------------------------------------|
@@ -43,37 +45,17 @@
 | Cannot generalize beyond code | Can generalize, infer, reason        |
 
 
-# Visual Code Extension (Ctrl+Shift+X)
-- Live Server by Ritwick Dey
-
-# Install Ollama 
-
-- Go to the official Ollama download page:
-    https://ollama.com/download
-
-- Run the installer and follow the instructions. It will install Ollama and add it to your system PATH.
-
-# Pull Model
- - ollama pull llama3.2
- - ollama pull hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf
-
-# Test Model
-
-ollama run llama3.2
-
-http://localhost:11434/v1/completions
-http://localhost:11434/v1/embeddings
-
 # What is Prompt Engineering?
 
 **Prompt engineering** is the practice of **carefully designing and structuring inputs (prompts) given to a language model (like GPT or any LLM) to get the most accurate, relevant, or useful output**. Think of it as “programming” the model using words instead of code.
 
----
 
 ## 1. Why it matters
+
 Language models don’t “know” what you want inherently—they generate text based on patterns learned during training. The way you phrase your request strongly affects the output.
 
 Example:
+
 - **Vague prompt:** `"Tell me about cats"` → might give a generic paragraph.  
 - **Engineered prompt:** `"Write a 3-paragraph essay about the history of domestic cats, including their role in ancient Egypt and modern society"` → more structured and useful result.
 
@@ -106,11 +88,22 @@ Example:
 ---
 
 ## 4. Why it’s a skill
+
 Good prompt engineering can drastically reduce errors, make outputs more relevant, and even save costs (for models you pay per token).  
 
-Essentially, you’re **programming with language instead of code**.
 
----
+# Tools used
+
+  - Visual Code Extension (Ctrl+Shift+X) with Live Server addon by Ritwick Dey
+  - Install Ollama (Go to the official Ollama download page:   https://ollama.com/download)
+
+# Pull Model
+
+ - ollama pull llama3.2
+ - ollama pull hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf
+ - ollama run llama3.2
+ - http://localhost:11434/v1/completions
+ - http://localhost:11434/v1/embeddings
 
 
 
@@ -120,6 +113,7 @@ Essentially, you’re **programming with language instead of code**.
 - Install and explore (https://medium.com/@luongnv89/setting-up-claude-code-locally-with-a-powerful-open-source-model-a-step-by-step-guide-for-mac-84cf9ab7302f)
 
 # Projects
+
 - Translation Service based on AI specially for Arabic/Urdu Scripts
 - - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct
 - Custom desktop tool like claude with bigger context window for code generation
