@@ -115,5 +115,5 @@ Good prompt engineering can drastically reduce errors, make outputs more relevan
 # Projects
 
 - Translation Service based on AI specially for Arabic/Urdu Scripts
-- - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct
+  - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct
 - Custom desktop tool like claude with bigger context window for code generation
