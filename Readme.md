@@ -1,13 +1,19 @@
 # Program
-A software program is a set of instructions written in a programming language that tells a computer how to perform specific tasks.
 
-# LM (Language Model)
+- Collection of instructions directing a computer to perform tasks.
 
-LM is a Program?
+- Processes input and produces output based on explicit rules.
 
-A Language Model (LM) is a computer program that takes input and creates output
+- Follows step-by-step instructions from a programmer.
 
-But the way it works is completely different from a normal (traditional) program.
+# Language Model (LM)
+
+- A type of program that learns patterns from large text data.
+
+- Generates or predicts language instead of following explicit rules.
+
+- Infers context to produce human-like responses.
+
 
 # LM vs Traditional Program (Simple Comparison)
 
