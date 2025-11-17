@@ -107,12 +107,12 @@ Essentially, you’re **programming with language instead of code**.
 
 
 
-# Projects
-- Translation Service based on AI specially for Arabic/Urdu Scripts
-- - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct
-- Custom desktop tool like claude with bigger context window for code generation
-
 # Assignments
 
 - Install and explore community project -> https://github.com/infiniflow/ragflow
 - Install and explore (https://medium.com/@luongnv89/setting-up-claude-code-locally-with-a-powerful-open-source-model-a-step-by-step-guide-for-mac-84cf9ab7302f)
+
+# Projects
+- Translation Service based on AI specially for Arabic/Urdu Scripts
+- - Switch to dedicated translation language model: Helsinki-NLP instead of Mistral-7B-Instruct
+- Custom desktop tool like claude with bigger context window for code generation
