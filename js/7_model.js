@@ -1,6 +1,8 @@
 const url = "http://localhost:11434/v1";
 let chunkEmbeddings = [];
 let embeddingsStored = false;
+let embeddingsModel='hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf';
+let chatModel='llama3.2';
 async function embedBatch(texts){
   
   
@@ -11,7 +13,7 @@ async function embedBatch(texts){
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    model: "hf.co/nomic-ai/nomic-embed-text-v2-moe-gguf",
+    model: embeddingsModel,
     input: texts
     })
   });
@@ -31,6 +33,7 @@ async function storeEmbeddings(){
 }
 
 function getRelevantChunks(queryEmbedding, topK = 3) {
+
   const scored = chunkEmbeddings.map((emb, idx) => ({
     idx,
     score: cosineSim(queryEmbedding, emb)
@@ -42,10 +45,11 @@ function getRelevantChunks(queryEmbedding, topK = 3) {
 // Translate function with RAG
 async function translateWithRAG(input) {
   // Generate embedding for input
+    console.log("Inside translateWithRAG ::::"+input);
   const res = await fetch(`${url}/embeddings`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input, model: "llama3.2" })
+    body: JSON.stringify({ input, model: embeddingsModel })
   });
   const data = await res.json();
   const queryEmbedding = data.data[0].embedding;
@@ -55,13 +59,13 @@ async function translateWithRAG(input) {
   console.log("relevantText:::::"+relevantText);
 
   // Send to LLM for translation
-const prompt = `Using only the reference text below, provide the English translation of the Arabic phrase. 
+const prompt = `Using only the reference text below, provide the English translation of the Arabic transliteration phrase. 
     Return only the translation, with no explanations or additional text.
       Reference:
       ${relevantText}   
       Phrase: "${input}"`;
   const payload = {
-    model: "llama3.2",
+    model: chatModel,
     prompt: prompt,
     max_tokens: 150
   };
