@@ -3,7 +3,7 @@ async function translateWithLLM(input) {
 
   const payload = {
     model: "llama3.2",
-    prompt: `Translate this Arabic phrase to English:\n"${input}"`,
+    prompt: `Translate this Arabic roman phrase to English:\n"${input}"`,
     max_tokens: 60
   };
 

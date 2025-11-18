@@ -54,7 +54,7 @@ async function translateWithRAG(input) {
   console.log("relevantText:::::"+relevantText);
 
   // Send to LLM for translation
-  const prompt = `Translate the following Arabic phrase to English using the reference text below:\nReference:\n${relevantText}\nPhrase: "${input}"`;
+  const prompt = `Translate the following Arabic roman phrase to English using the reference text below:\nReference:\n${relevantText}\nPhrase: "${input}"`;
 
   const payload = {
     model: "llama3.2",
@@ -89,7 +89,7 @@ async function predictTranslation() {
   
   if (!pdfLoaded) {
     predictionElem.textContent = "Parsing Pdf...";
-    await extractPdfText();
+    await extractPdfText('/docs/translation_reference_v2.pdf');
     pdfLoaded = true;
   }
   

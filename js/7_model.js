@@ -97,7 +97,7 @@ async function predictTranslation() {
   
   if (!pdfLoaded) {
     predictionElem.textContent = "Parsing Pdf...";
-    await extractPdfText();
+    await extractPdfText('/docs/translation_reference_v3.pdf');
     pdfLoaded = true;
   }
   

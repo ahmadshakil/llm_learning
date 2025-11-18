@@ -1,4 +1,4 @@
-const languageModel = {
+const dictionary = {
   "Bismillah": "In the name of Allāh",
   "ar-Rahman":"the Entirely Merciful",
   "ar-Rahim":"the Especially Merciful"
@@ -25,7 +25,7 @@ function levenshteinDistance(a, b) {
 function findClosestWord(input) {
   let minDistance = Infinity;
   let closestWord = null;
-  for (const word of Object.keys(languageModel)) {
+  for (const word of Object.keys(dictionary)) {
     const dist = levenshteinDistance(input, word);
     if (dist < minDistance) {
       minDistance = dist;
@@ -50,12 +50,12 @@ function predictTranslation() {
 
   // Normalize Arabic input - could be added here if needed
   
-  if (input in languageModel) {
-    predictionElem.textContent = `[translate:${input}] Translation: ${languageModel[input]}`;
+  if (input in dictionary) {
+    predictionElem.textContent = `[translate:${input}] Translation: ${dictionary[input]}`;
   } else {
     const closest = findClosestWord(input);
     if (closest) {
-      predictionElem.textContent = `No exact match found. Did you mean [translate:${closest}]? Translation: ${languageModel[closest]}`;
+      predictionElem.textContent = `No exact match found. Did you mean [translate:${closest}]? Translation: ${dictionary[closest]}`;
     } else {
       predictionElem.textContent = "Translation not found.";
     }
