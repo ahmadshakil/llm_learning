@@ -95,7 +95,10 @@ Good prompt engineering can drastically reduce errors, make outputs more relevan
 # Tools used
 
   - Visual Code Extension (Ctrl+Shift+X) with Live Server addon by Ritwick Dey
-  - Install Ollama (Go to the official Ollama download page:   https://ollama.com/download)
+  - Install Ollama (Go to the official Ollama download page: https://ollama.com/download)
+  - Download nvm installer : https://github.com/coreybutler/nvm-windows/releases
+      - nvm install 24.11.1
+      - nvm use 24.11.1
 
 # Pull Model
 
